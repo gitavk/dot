@@ -4,7 +4,7 @@ let g:mapleader = "\<Space>"
 " Alternate way to save
 nnoremap <C-s> :w<CR>
 " Alternate way to quit
-nnoremap <C-Q> :wq!<CR>
+nnoremap <C-q> :wq!<CR>
 
 " Use alt + hjkl to resize windows
 nnoremap <C-j> :resize -2<CR>
@@ -29,3 +29,10 @@ nnoremap <M-h> <C-w>h
 nnoremap <M-j> <C-w>j
 nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
+
+" git actions
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gs :G<CR>
+nmap <leader>gr :Gvdiffsplit!<CR>
+nmap <leader>gl :diffget //3<CR>
+nmap <leader>gh :diffget //2<CR>
