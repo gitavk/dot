@@ -34,3 +34,6 @@ set noswapfile                  " Don't use swapfile
 set nobackup                    " Don't create annoying backup files
 set splitright                  " Split vertical windows right to the current
 set splitbelow                  " Split horizontal windows below to the
+
+" execute code formater on save
+autocmd BufWritePre *.py execute ':Black'
