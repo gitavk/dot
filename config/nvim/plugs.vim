@@ -8,4 +8,8 @@ call plug#begin('~/.local/share/nvim/plugged')
     Plug 'psf/black', { 'branch': 'stable' }
     " git
     Plug 'tpope/vim-fugitive'
+    " status line
+    Plug 'nvim-lualine/lualine.nvim'
+    " If you want to have icons in your statusline choose one of these
+    Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
