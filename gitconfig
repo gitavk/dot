@@ -1,0 +1,13 @@
+[user]
+	email = 3apa3ka3@gmail.com
+	name = gitavk
+
+[init]
+	defaultBranch = main
+
+[merge]
+  conflictstyle = zdiff3
+
+[includeIf "gitdir:~/projects/sxipher/"]
+    path = ~/projects/sxipher/.gitconfig
+
