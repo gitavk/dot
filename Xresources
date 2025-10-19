@@ -1,48 +1,59 @@
+xterm*vt100.locale:true
+
 xterm*faceName: Hurmit Nerd Font
 xterm*faceSize: 14
 
+xterm*selectToClipboard: true
+
 ! special
-*.foreground:   #ABB2BF
-*.background:   #282C34
-*.cursorColor:  #ABB2BF
+xterm*foreground:   #ABB2BF
+xterm*background:   #282C34
+xterm*cursorColor:  #ABB2BF
 
 ! black
-*.color0:       #2C323C
-*.color8:       #3E4452
+xterm*color0:       #2C323C
+xterm*color8:       #3E4452
 
-! red
-*.color1:       #E06C75
-*.color9:       #E06C75
+!red
+xterm*color1:       #E06C75
+xterm*color9:       #E06C75
 
-! green
-*.color2:       #98C379
-*.color10:      #98C379
+!green
+xterm*color2:       #98C379
+xterm*color10:      #98C379
 
-! yellow
-*.color3:       #E5C07B
-*.color11:      #E5C07B
+!yellow
+xterm*color3:       #E5C07B
+xterm*color11:      #E5C07B
 
-! blue
-*.color4:       #61AFEF
-*.color12:      #61AFEF
+!blue
+xterm*color4:       #61AFEF
+xterm*color12:      #61AFEF
 
-! magenta
-*.color5:       #C678DD
-*.color13:      #C678DD
+!magenta
+xterm*color5:       #C678DD
+xterm*color13:      #C678DD
 
-! cyan
-*.color6:       #56B6C2
-*.color14:      #56B6C2
+!cyan
+xterm*color6:       #56B6C2
+xterm*color14:      #56B6C2
 
-! white
-*.color7:       #5C6370
-*.color15:      #ABB2BF
+!white
+xterm*color7:       #5C6370
+xterm*color15:      #ABB2BF
 
-!! URxvt Appearance
-URxvt.font: xft:Hurmit Nerd Font:pixelsize=16
-URxvt.boldFont: xft:Hurmit Nerd Font:bold:pixelsize=16
-*.italicFont: xft:Hurmit Nerd Font:style=Italic:size=16
-*.boldItalicFont: xft:Hurmit Nerd Font:style=Bold Italic:size=16
 
-URxvt.scrollBar: false
-URxvt.scrollBar_right: false
+XTerm*vt100.translations: #override \
+    Shift Ctrl <Key> C: copy-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> V: insert-selection(CLIPBOARD)
+
+! Rofi color config:
+! Lines:              background,    foreground,   background alt, highlight bg, highlight fg
+rofi.color-normal:    argb:0000000,  #ccff99,      argb:11ffffff,  #ccff99,      #000000
+rofi.color-urgent:    argb:0000000,  #ffff99,      argb:11ffffff,  #ffff99,      #440000
+rofi.color-active:    argb:22aaaaa,  #eeffcc,      argb:22ffffff,  #eeffcc,      #004400
+! Window:             background     border,  separator
+rofi.color-window:    argb:dd003300, #ddeebb, #aacc88
+rofi.separator-style: dash
+
+export PATH="$HOME/.local/bin:$PATH"
