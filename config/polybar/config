@@ -29,10 +29,8 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
 background = #222
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
 foreground-alt = #555
 primary = #ffb52a
@@ -67,12 +65,39 @@ trans = #00000000
 semi-trans = #dd282828
 semi-trans-black = #aa000000
 
-[bar/bar1]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/bar2]
+monitor = DP2
 width = 100%
 height = 32
-;offset-x = 1%
-;offset-y = 1%
+radius = 6.0
+fixed-center = false
+
+module-margin-left = 1
+module-margin-right = 2
+modules-left = bspwm
+modules-right = wlan date xkeyboard
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+border-size = 4
+border-color = #00000000
+padding-left = 0
+padding-right = 2
+
+font-0 = "Hurmit Nerd Font:style=Regular:size=14;2"
+font-1 = "Hurmit Nerd Font:style=Regular:size=14;2"
+font-2 = "Hurmit Nerd Font:style=Bold:size=14;2"
+
+[bar/bar1]
+monitor = DP1
+width = 100%
+height = 32
 radius = 6.0
 fixed-center = false
 
@@ -95,27 +120,9 @@ font-0 = "Hurmit Nerd Font:style=Regular:size=14;2"
 font-1 = "Hurmit Nerd Font:style=Regular:size=14;2"
 font-2 = "Hurmit Nerd Font:style=Bold:size=14;2"
 
-modules-left = i3
-modules-center =
-;modules-right = filesystem xbacklight alsa pulseaudio xkeyboard memory cpu wlan eth battery temperature date 
-modules-right = pulseaudio wlan battery date xkeyboard
-
-tray-position = left
-tray-detached = false
-
-; tray-padding = 2
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+modules-left = bspwm
+modules-center = cava
+modules-right = 
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -124,11 +131,21 @@ cursor-scroll = ns-resize
 type = internal/xwindow
 label = %title:0:30:...%
 
+[module/cava]
+type = custom/script
+tail = true
+exec = $HOME/.config/polybar/cava.sh
+label-foreground = ${colors.bg-blue}
+format = <label>
+format-font = 5
+label = %output%
+
 [module/xkeyboard]
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = " "
+format-prefix = " "
+format-prefix-foreground = ${colors.bg-yellow}
 ; format-prefix-foreground = ${colors.foreground-alt}
 ; format-prefix-underline = ${colors.secondary}
 
@@ -152,25 +169,37 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
+pin-workspaces = true
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 5;
+ws-icon-3 = 6;
+ws-icon-4 = 7;
+ws-icon-5 = 8;
+ws-icon-6 = 0;  
+ws-icon-default = " "
 
 ; Separator in between workspaces
-; label-separator = |
+label-separator =|
+; label-separator-padding = 1
+label-separator-foreground = ${colors.bg-orange}
+
+
+label-focused = %icon%
+label-focused-background = ${colors.bg-blue}
+label-focused-underline= ${colors.bg-yellow}
+label-focused-padding = 1
+
+label-occupied = %icon%
+label-occupied-padding = 1
+
+label-urgent = %icon%!
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 1
+
+label-empty = %icon%
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 1
 
 [module/i3]
 type = internal/i3
@@ -263,15 +292,18 @@ label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp1s0
+# interface = wlan0
+interface = wlx60fb006428db
 interval = 5.0
 
 ramp-signal-0 = 直
 ramp-signal-1 = 直
 ramp-signal-2 = 直
 ramp-signal-3 = 直
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = #9f78e1
 
+; label-connected = %essid% %local_ip% %ifname% %downspeed:9%
+label-connected = %local_ip%
 format-connected = <ramp-signal> <label-connected>
 format-connected-padding = 1
 ; label-connected = %{T4} %{T-} %{T2}%downspeed%%{T-}
@@ -454,7 +486,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 2
+margin-bottom = 2
 
 ; vim:ft=dosini
