@@ -10,7 +10,7 @@ echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
 polybar bar1 2>&1 | tee -a /tmp/polybar1.log & disown
 # polybar bar2 2>&1 | tee -a /tmp/polybar2.log & disown
 
-my_laptop_external_monitor=$(xrandr --query | grep 'DP2')
+my_laptop_external_monitor=$(xrandr --query | grep 'DP-2')
 if [[ $my_laptop_external_monitor = *connected* ]]; then
   polybar bar2 2>&1 | tee -a /tmp/polybar1.log & disown
 fi

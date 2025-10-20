@@ -5,8 +5,8 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Привязка рабочих столов к монитору(ам)
 # bspc monitor -d 1 2 3 4 5 6 7 8 9 0
-bspc monitor DP1 -d 1 2 3 4 5 6
-bspc monitor DP2 -d 7 8 9 0
+bspc monitor DP-1 -d 1 2 3 4 5 6
+bspc monitor DP-2 -d 7 8 9 0
 
 # Рамки и отступы
 bspc config border_width         1
