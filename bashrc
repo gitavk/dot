@@ -59,10 +59,10 @@ NO_COLOR="\[\033[00m\]"
 
 #show git branch
 show_git_branch() {
-   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/-(\1)/'
 }
 
-PS1="$GREEN\u$NO_COLOR@$RED\h$BLUE\w$YELLOW\$(show_git_branch)$NO_COLOR\$ "
+PS1="$BLUE┌──($GREEN\u$NO_COLOR@$RED\h$BLUE)-[$NO_COLOR\w$BLUE]$YELLOW\$(show_git_branch)$BLUE\n└─\$ $NO_COLOR"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -101,5 +101,6 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
    exec startx
 fi
 
-export PATH="$HOME/.local/bin/:$HOME/go/bin/:$PATH"
-. "$HOME/.cargo/env"
+export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/go/bin/
+export PATH=~/go/bin:$PATH
+export PATH=~/.npm-global/bin:$PATH
