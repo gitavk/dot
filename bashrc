@@ -62,7 +62,7 @@ show_git_branch() {
    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/-(\1)/'
 }
 
-PS1="$BLUE┌──($GREEN\u$NO_COLOR@$RED\h$BLUE)-[$NO_COLOR\w$BLUE]$YELLOW\$(show_git_branch)$BLUE\n└─\$ $NO_COLOR"
+PS1="$BLUE┌─${VIRTUAL_ENV:+$NO_COLOR($(basename "$VIRTUAL_ENV"))$BLUE─}($GREEN\u$NO_COLOR@$RED\h$BLUE)-[$NO_COLOR\w$BLUE]$YELLOW\$(show_git_branch)$BLUE\n└─\$ $NO_COLOR"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -104,3 +104,5 @@ fi
 export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/go/bin/
 export PATH=~/go/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
+
+. "$HOME/.local/bin/env"
