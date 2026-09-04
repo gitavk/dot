@@ -1,0 +1,7 @@
+[env]
+TEST_CONF = "DEMO"
+
+[font]
+size = 14.0
+normal.family = "Hurmit Nerd Font"
+

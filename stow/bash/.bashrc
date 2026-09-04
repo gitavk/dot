@@ -97,7 +97,7 @@ if ! shopt -oq posix; then
 fi
 
 # Autostart X at login
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR:-0}" -eq 1 ]; then
    exec startx
 fi
 
@@ -105,4 +105,4 @@ export PATH=$PATH:$HOME/.local/bin/:$HOME/.local/go/bin/
 export PATH=~/go/bin:$PATH
 export PATH=~/.npm-global/bin:$PATH
 
-. "$HOME/.local/bin/env"
+#. "$HOME/.local/bin/env"
